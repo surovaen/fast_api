@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fastapi_osm</title>
+    <style>
+        input[type=text] {
+            background-color: whitesmoke;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: content-box;
+        }
+
+        input[type=text]:focus {
+            border: 3px solid #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="text-danger">
+            {% for error in errors %}
+            <h4>{{ error }}</h4>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row my-5">
+        <form action="/" method="POST">
+            <div class="mb-3">
+                <input type="text" name="location" value="{{location}}"
+                       placeholder="Введите адрес">
+            </div>
+            <div class="mb-3">
+                <input type="text" name="radius" value="{{radius}}" placeholder="Введите радиус, км">
+            </div>
+            <button type="submit" class="btn btn-primary">Найти</button>
+        </form>
+    </div>
+</div>
+
+{% include "inc/map.html" %}
+
+</body>
+</html>
